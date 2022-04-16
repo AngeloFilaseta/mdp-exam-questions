@@ -1,3 +1,432 @@
-\section{Section}
-This is a bibliography citation to the Vocabolangelo ~\cite{vocabolangelo}.
-\centeredImage{img/parrot.jpg}{A Parrot}{0.3}
+\section{Insiemi}
+
+\begin{enumerate} \bfseries
+\item Cos'è la cardinalità di un insieme? Cos'è una corrispondenza biunivoca tra insiemi? Cosa vuol dire insieme numerabile?(x2)
+\end{enumerate}
+Sia A un insieme, sia n il numero degli elementi contenuti in A. La cardinalità di A è n. Due insiemi hanno la stessa cardinalità se esiste una corrispondenza biunivoca tra essi, ovvero se è possibile associare a ciascun elemento di un insieme a uno ed un solo elemento dell'altro. Un insieme è numerabile se ha la stessa cardinalità di $\mathbb{N}$.
+\begin{enumerate}[resume]\bfseries
+\item Esempio di insieme numerabile e non numerabile.
+\end{enumerate}
+Un insieme numerabile è per esempio $\mathbb{Z}$. Un insieme non numerabile è $\mathbb{R}$, o anche un infinito insieme di infinite sequenze di bit.
+
+\section{Combinatoria}
+
+\begin{enumerate}[resume]\bfseries
+	\item Quanti sottoinsiemi ha un insieme con n elementi?
+\end{enumerate}
+Si tratta della cardinalità dell'insieme delle parti. P(A) è l'insieme i cui elementi sono sottinsiemi di A, e la sua cardinalità è $2^n$, perchè c'è una corrispondenza biunivoca con $\{0,1\}^n$.
+\begin{enumerate}[resume]\bfseries
+	\item Se siamo solo interessati ai sottoinsiemi di una certa cardinalità invece come facciamo?
+\end{enumerate}
+Potremmo usare il principio di inclusione-esclusione, o calcolare il numero di combinazioni della lunghezza interessata.
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una lista?Cos'è una disposizione?
+\end{enumerate}
+Una lista è una sequenza di numeri in cui ci possono essere ripetizioni. Una disposizione è una lista in cui non compaiono due elementi uguali.\newline
+$(2,5,1,2)$ è una lista, ma non una disposizione. $(2,5,1,7)$ è una dispozione. Le disposizioni di lunghezza k in un insieme di n elementi  si scrivono $(n)_k$ e sono $(n) \cdot (n-1) \cdot ... \cdot (n-k+1)$. Le disposizioni lunghe n si dicono permutazioni.
+\begin{enumerate}[resume]\bfseries
+\item Cos'é il prodotto cartesiano?
+\end{enumerate}
+Siano A e B insiemi.\newline
+\[A \times B = \{(a,b) \vert \:a \in A, b \in B\}. \]
+Per esempio, $\mathbb{R}^2 = \mathbb{R} \times \mathbb{R} = (0,0), (0,1), (0,2), ...$
+\begin{enumerate}[resume]\bfseries
+\item Cos'è uno scombussolamento? (x2)
+\end{enumerate}
+Uno scombussolamento è una permutazione in cui nessun elemento rimane al suo posto. Per esempio (3 2 1 4) è uno scombussolamento. Il numero di scombussolamenti di lunghezza n è \[\sum_{i=0}^{n} (-1)^i(n)_{n-i}\].
+ \begin{enumerate}[resume]\bfseries
+	\item Cosa sono i numeri di Fibonacci?(x2)
+\end{enumerate}
+\textbf{ATTENZIONE: NON USARE LA DEFINIZIONE DI WIKIPEDIA!} \newline Non è sbagliata, è semplicemente definita in modo diverso.\newline
+$\forall n \ge 0 $ denotiamo con $F_n$ il numero di liste binarie in cui non compaiono due 1 consecutivi.\newline
+\[F_0 = 1,\quad F_1 = 2 , \quad F_2 = 3, \quad F_n = F_{n-1} + F_{n-2}\]
+\textit{Dimostrazione, presa dalle note:}\newline
+Chiamiamo $G_n$ il numero di sequenze binarie di lunghezza n in cui non compaiono
+due 1 consecutivi e che terminano con 0 e $H_n$ il numero di sequenze binarie di lunghezza n in cui non
+compaiono due 1 consecutivi e che terminano con 1. Si ha evidentemente $F_n = G_n + H_n$.
+Ora, le sequenze utilizzate per $G_n$ sono sequenze di lunghezza n-1 senza 1 consecutivi a cui aggiungiamo
+uno 0: abbiamo quindi $G_n = F_{n-1}$. Le sequenze utilizzate per $H_n$ devono terminare necessariamente con 01
+e sono quindi formate da sequenze di lunghezza n - 2 senza 1 consecutivi a cui aggiungiamo 01. Abbiamo
+quindi $H_n = F_{n-2}$. $\square$
+\begin{enumerate}[resume]\bfseries
+\item Spiegami il principio di inclusione-esclusione. (x3)
+\end{enumerate}
+Vogliamo calcolare la cardinalità dell'unione di n insiemi. Sommiamo quindi la cardinalità dei singoli insiemi. Togliamo poi tutti quelli che erano comuni a due insieme (ovvero gli elementi nell'intersezione), perchè contati due volte. Vanno poi aggiunti di nuovo gli elementi in comune a  tre insiemi, che abbiamo tolto due volte  nella scorsa operazione e cosí via. La formula è la seguente:\newline
+ \[\vert\bigcup \limits_{i=1}^{n} A_{i}\vert = \sum_{S = {(1...n})}^{n} (-1)^{\vert S \vert +1} \vert\bigcap\limits_{i\in S} A_{i}\vert\].
+ \begin{enumerate}[resume]\bfseries
+\item Cos'è una combinazione? Cos'è un coefficiente binomiale? (x2)
+\end{enumerate}
+Ad ogni disposizione di lunghezza k, possiamo associare un sottoinsieme di cardinalità k, "dimenticandoci" dell'ordine. Per esempio: $(4,1,2),(1,2,4),(2,1,4)  \to \{1,2,4\} $\newline
+Ogni sottoinsieme è associato ad esattamente $k!$  disposizioni, cioè tutte le sue permutazioni. Le disposizioni sono quindi $k!$  volte i sottoinsiemi, e le denotiamo con: \[{{n}\choose{k}} = \frac{(n)_k }{k!}\]
+ \begin{enumerate}[resume]\bfseries
+	\item Quanto fa $\binom{4}{0} + \binom{4}{1} + \binom{4}{2} + \binom{4}{3} + \binom{4}{4}$ senza fare conti?
+\end{enumerate}
+Si tratta di tutti i sottoinsiemi di un insieme con 4 elementi, quindi la somma è $2^4$ che è $P(\{1,2,3,4\})$ (insieme delle parti).\newline
+Oppure facendo i conti...\newline
+$\binom{4}{0}$ e $\binom{4}{4}$ sono uguali a 1. $\binom{4}{1}$ è 4, $\binom{4}{2} $ è 6 perchè posso piazzare 2 numeri vicini 3 volte in 4 posti, moltiplicato per 2 che sono le permutazioni dei 2 numeri. $\binom{4}{3} = \binom{4}{1} = 4$
+ \begin{enumerate}[resume]\bfseries
+\item Quante sono le combinazioni di tipo (a,b,c)?
+\end{enumerate}
+Le combinazioni di tipo  (a,b,c) in A è una terna ordinata (A1,A2,A3) di sottoinsiemi di A tali che: \[\vert A1\vert = a,  \vert A2\vert = b,  \vert A3\vert = c \quad \text{ed} \quad A1\cup A2\cup A3 = A\] Se $a,b,c \in \mathbb{N} \quad \text{ed} \quad a+b+c=n$ allora le combinazioni di tipo (a,b,c) formano un prodotto condizionato di tipo: \[ \left(  \binom{n}{a}, \binom{n-a}{b}, 1\right) \]
+ \begin{enumerate}[resume]\bfseries
+\item Qual'è la formula di Stifel? A cosa serve? Dimostrazione.(x4)
+\end{enumerate}
+Se $0 < k < n$ allora
+\[\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}\]
+\textit{Dimostrazione presa dalle note:}\newline
+Questa dimostrazione si può fare in modo algebrico ma preferiamo farla in modo combinatorio. Infatti abbiamo che
+$\binom{n-1}{k-1} $ è il numero di sottoinsiemi con k elementi e che contengono n, mentre $\binom{n-1}{k}$ è il numero di sottoinsiemi con k elementi e che NON contengono n. Il risultato segue. $\square$\newline
+La dimostrazione è scritta un po' male, con  "Infatti abbiamo che $\binom{n-1}{k-1} $ è il numero di sottoinsiemi con k elementi " intende dire i sottoinsiemi con \textbf{k-1} elementi a cui va aggiunto n come ultimo valore. Per capire meglio provate a scrivere tutte le combinazioni  $\binom{3}{2}$ e aggiungete 4 alla fine di ognuna, poi scrivete l'unica di $\binom{3}{3}$ .\newline Magia.\newline
+Generalizzando:
+\[\binom{n}{a,b,c} = \binom{n-1}{a-1,b,c} + \binom{n-1}{a,b-1,c} + \binom{n-1}{a,b,c-1}\]
+ \begin{enumerate}[resume]\bfseries
+\item Cos'è un cammino reticolare?
+\end{enumerate}
+Consideriamo i cammini che uniscono l’origine con il punto (m, n), con $m, n \in \mathbb{N}$ nel piano cartesiano costituiti da una sequenza di passi unitari verso destra e verso l'alto. Quanti sono tali cammini? È evidente che ad ogni passo verso destra l’ascissa aumenta di 1 e ad ogni passo verso l’alto l’ordinata aumenta di 1.\newline Ne segue che complessivamente bisogna effettuare m passi verso destra e n passi verso l'alto. Abbiamo quindi che ogni cammino corrisponde ad una sequenza binaria in cui gli 0 corrispondono ai passi verso destra e gli 1 ai passi verso l’alto in cui 0 compare esattamente m volte, e 1 compare esattamente n volte.\newline Ogni cammino resta quindi individuato dalla scelta delle m posizioni (tra le
+m + n disponibili) in cui inserire gli 0 e quindi tali cammini sono esattamente $\binom {m + n}{m}$
+\begin{enumerate}[resume]\bfseries
+	\item Parlami delle funzioni iniettive e suriettive.
+\end{enumerate}
+Riassuntazzo:  una funzione iniettiva è una funzione che associa, a elementi distinti del dominio, elementi distinti del codominio.
+In altre parole: una funzione da un insieme A a un insieme B è iniettiva se ogni elemento di B non può essere ottenuto in più modi diversi partendo dagli elementi di A.\newline
+Una funzione si dice invece suriettiva quando ogni elemento del codominio è immagine di almeno un elemento del dominio. In tal caso si ha che l'immagine coincide con il codominio.
+Siano $m$ il numero di elementi dell'insieme $A$ ed $n$ il numero degli elementi in B. Esistono in totale $n^m$ funzioni. Quante le iniettive?\newline
+Le funzioni iniettive da A a B sono tante quante le disposizioni in B di lunghezza m, cioè $(n)_m$, ovviamente se $m \le n$.\newline
+Per trovare il numero di funzioni suriettive, è richiesto l'uso del principio di inclusione-esclusione.\newline
+È importante notare che $m \ge n$ in questo caso. \newline
+Denotiamo con $A_1$ l'insieme contenente tutte le funzioni che non hanno l'elemento 1 nell'immagine. Denotiamo $A_2$ allo stesso modo fino ad $A_n$.
+Se $K$ è l'insieme contenente tutte e funzioni suriettive, allora $K = (A_1 \cup A_2 \cup ... \cup A_n)^C$.\newline
+Quindi:
+ \[\vert A_i  \vert= (n-1)^m \quad \quad  \vert A_i \cap A_j  \vert= (n-2)^m \quad ...\]
+ \[\vert K \vert = \sum_{S = {(1...n})}^{n} (-1)^{\vert S \vert} \vert\bigcap\limits_{i\in S} A_{i}\vert = \]
+\[\vert K \vert  = \sum_{k=0}^{n}(-1)^k \binom{n}{k} (n-k)^m\]
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una partizione? Cosa sono i numeri di Bell? E quelli di Stirling? (x4)
+\end{enumerate}
+Sia A un insieme.\newline Una partizione di A in k blocchi è  un insieme di k sottoinsiemi non vuoti
+\[\{ S_1,S_2,...,S_k\}\quad  t.c. \quad S_i \cap S_j = 0 \quad \forall i \ne j \quad \text{ed} \quad S_1\cup,...,\cup S_k = A\]
+I numeri di Bell denotati come $B_n$ sono il numero di partizioni di $\{1,2,...,n\}$.
+La formula ricorsiva per calcolare i numeri di Bell è la seguente: \[B_n = \sum_{k =1}^{n} \binom{n-1}{k-1}B_{n-k}\]
+I numeri di Stirling denotati con $S_{n,k}$ sono le partizioni in k blocchi di $\{1,2,...,n\}$.
+La formula per calcolare i numeri di Stirling è la seguente:
+\[S_{n,k} = \frac{1}{k!}\sum_{i=0}^{k}(-1)^i \binom{k}{i} (k-i)^n\]
+Che equivale alla formula per calcolare il numero di funzioni suriettive da  n a k diviso k!
+
+\section{Statistica Descrittiva}
+
+ \begin{enumerate}[resume]\bfseries
+	\item Cos'è un indice di dispersione?
+\end{enumerate}
+Un indice di dispersione serve per descrivere sinteticamente una distribuzione statistica quantitativa, e in modo particolare la misura con la quale i suoi valori sono distanti da un valore centrale (identificato con un indice di posizione, solitamente media o mediana).
+\begin{enumerate}[resume]\bfseries
+\item Cos'è la varianza? Come si trova? Dimostrazione
+\end{enumerate}
+La Varianza è un indice di dispersione ed un indicatore della variabilità di un insieme di dati. Un valore basso significa che i dati sono raggruppati molto vicini fra loro, mentre una varianza elevata indica dei dati più distribuiti.
+Scegliamo un valore $t$ e consideriamo gli scostamenti dei valori $x_1, x_2,...,x_n$ da t.
+\[\frac{(x_1-t) + (x_2 -t) + ... +(x_n -t)}{n}\] Per praticità usiamo i quadrati:
+\[\frac{(x_1-t)^2 + (x_2 -t)^2 + ... +(x_n -t)^2}{n}\]
+Si sceglie t in modo che questa quantità sia minima. Fissiamo quindi $t$ come $\overline{x}$. La varianza, nella sua forma finale è quindi;
+\[\sigma_x^2 = \frac{1}{n} ((x_1-\overline{x})^2 + (x_2 -\overline{x})^2 + ... +(x_n -\overline{x})^2)\]
+Si può anche scrivere:
+\[\sigma_x^2 = \overline{x^2} - \overline{x}^2\]
+\textit{Dimostrazione sulle note...}
+\begin{enumerate}[resume]\bfseries
+\item Covarianza. Cos'è? Come si trova? (x2)
+\end{enumerate}
+La covarianza di due variabili statistiche (x e y) o variabili aleatorie è un numero che fornisce una misura di quanto le due varino assieme, ovvero della loro dipendenza.
+La formula è:
+\[\sigma_{x,y}= \frac{1}{n} ((x_1-\overline{x})(y_1-\overline{y}) + (x_2 -\overline{x})(y_2-\overline{y}) + ... +(x_n -\overline{x})(y_n-\overline{y}))\]
+ Può essere positiva negativa o nulla. Se la covarianza è positiva ci aspettiamo che i termini $(x_1-\overline{x})(y_1-\overline{y})$ siano piú facilmente positivi (a valori di x grandi corrispondono valori grandi di y).\newline
+ Se la covarianza è negativa, ci si aspetta che al crescere dei valori di x, quelli di y decrescono.
+ Si può anche scrivere:
+ \[\sigma_{x,y}= \overline{xy} - \overline{x}\:\overline{y}\]
+ \begin{enumerate}[resume]\bfseries
+\item Cos'è un indice di correlazione? Come capisco se ho una buona approssimazione?
+\end{enumerate}
+Date due variabili statistiche X e Y, l'indice di correlazione di Pearson è definito come la loro covarianza divisa per il prodotto delle deviazioni standard (varianza sotto radice quadrata) delle due variabili.
+\[\rho_{x,y} =\frac{\sigma_{x,y}}{\sigma_{x} \sigma_{y}}\]
+$\rho_{x,y}$ è un valore per descrivere la bontà dell'approssimazione della retta ai minimi quadrati. È un numero sempre compreso tra -1 e 1. Se siamo vicini allo 0 l'approssimazione è pessima, se siamo vicini a -1 o 1 invece abbiamo una buona approssimazione.
+ \begin{enumerate}[resume]\bfseries
+\item Cos'è un indice di posizione? A cosa serve la media campionaria? Come si calcola? Dimostrazione (x2)
+\end{enumerate}
+Un indice di posizione è un indice usato per dare un'idea approssimata dell'ordine di grandezza (la posizione sulla scala dei numeri, appunto) dei valori esistenti e scelti.
+Sono indici di posizione la Media, la Moda e la Mediana.
+Se un carattere x assume i valori $x_1,...,x_n$ su un campione di n elementi, la media campionaria è:
+\[\overline{x} = \frac{x_1+x_2+...+x_n}{n}\]
+ \begin{enumerate}[resume]\bfseries
+\item  A cosa serve la media geometrica? Come si calcola?(x3)
+\end{enumerate}
+La media geometrica di n termini è la radice n-esima del prodotto degli n valori:
+\[
+{\displaystyle M_{g}={\sqrt[{n}]{\prod _{i=1}^{n}x_{i}}}}
+\]
+La media geometrica trova impiego soprattutto dove i valori considerati vengono per loro natura moltiplicati tra di loro e non sommati. Esempio tipico sono i tassi di crescita, come i tassi d'interesse o i tassi d'inflazione.\newline
+Una caratteristica è che valori piccoli sono molto più influenti rispetto a quanto succede nella media aritmetica. In particolare, è sufficiente la presenza di un unico valore nullo per annullare la media geometrica.
+ \begin{enumerate}[resume]\bfseries
+\item Retta ai minimi quadrati, qual'è il suo scopo? Come si trova? Che cos'è? Definizione. (x2)
+\end{enumerate}
+Dati x e y due caratteri. Decidiamo di riportare sulle ascisse i valori di x e sulle ordinate quelli di y, perchè vogliamo studiare come x influenzi y. Se avessimo voluto studiare che influenza ha y
+su x avremmo fatto la scelta opposta.
+Lo scopo è quello di determinare una retta che approssimi nel migliore dei modi possibili i dati.
+La retta ai minimi quadrati è la retta di equazione y = ax+b che minimizza la media (o equivalentemente
+la somma) dei quadrati degli errori che si commettono stimando i valori $y_i$ del secondo carattere con $ax_i +b$.
+Considerando una retta generica di equazione $y = ax + b$ dipendente dai parametri a e b si vuole cioè
+minimizzare la quantità:
+\[ S(a, b) = \frac{1}{n} \sum_{i=1}^{n}
+(y_i - ax_i - b)^2
+\]
+Si sceglie $a = \frac{\sigma_{x,y}}{\sigma_x^2}$ e $b = \overline{y} - a\overline{x}$.
+\textit{Dimostrazione sul perché sulle note...}
+
+\section{Probabilità}
+
+ \begin{enumerate}[resume]\bfseries
+\item Cos'è uno spazio di probabilità?
+\end{enumerate}
+Sia dato un insieme $\Omega$ (di possibili risultati di un fenomeno aleatorio). Gli eventi saranno per noi i
+sottoinsiemi di $\Omega$ di cui vorremo e potremo calcolare le probabilità. Pertanto, NON HA SENSO calcolare la probabilità di un sottoinsieme di $\Omega$ che non sia un evento. È chiaro quindi che ci piacerebbe che unioni, interesezioni e complementari di eventi siano ancora eventi. Formalizziamo questo desiderio dopo aver introdotto la seguente terminologia. Se $E_1, E_2$, ... (finiti o infiniti) sono eventi diciamo che formano una successione di eventi.\newline
+Sia A una collezione di sottoinsiemi di $\Omega$. Diciamo che A è una famiglia coerente di eventi
+su $\Omega$ se:\newline
+$\emptyset, \Omega \in A$\newline
+$E^C \in A \quad \text{se}\quad E \in A$\newline
+Se $E_1, E_2$, . . . sono in A allora anche la loro unione e la loro intersezione stanno in A.
+\begin{enumerate}[resume]\bfseries
+\item Qual'è la formula delle probabilità totali? Come funziona? A cosa serve? (x2)
+\end{enumerate}
+Se $\{A_1,A_2,...\}$ è una partizione in eventi di $\Omega$ si ha per ogni evento B:
+\[\sum_{i=1}^{n} P(B\vert A_i)P(A_i)\]
+Possiamo vedere B come un evento in $\Omega$ , che può presentarsi in qualsiasi blocco $A_i$.\newline Per calcolare la probabilità di B serve quindi calcolare la probabilità che questo possa accadere per ogni blocco.
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile aleatoria? (x5)
+\end{enumerate}
+È una quantità che dipende dal risultato del fenomeno aleatorio. Formalmente è una funzione
+\[ X: \Omega  \to \mathbb{N} \]
+Per esempio, il fenomeno è il lancio di due dati:\newline
+$\Omega$ sono le coppie da 1 a 6.\newline
+$X$ é la somma dei due valori usciti.\newline
+Per essere considerata variabile aleatoria, $X$ deve soddisfare la seguente proprietà:
+\[ \{\omega \in \Omega : X(\omega) \le t\}\] è un evento $\forall\,t \in \mathbb{R}$\newline
+\textit{Vedi le note per maggiori dettagli, è importante sapere bene la risposta a questa domanda.}
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile aleatoria continua?(x2)
+\end{enumerate}
+Intuitivamente, le variabili casuali continue sono quelle che possono assumere un insieme continuo di valori, al contrario delle distribuzioni discrete, per le quali l'insieme dei possibili valori ha cardinalità al più numerabile.\newline
+Una variabile aleatoria x si dice continua se $F_x(t) = P(x \le t)$ è una funzione continua. Allora la funzione di ripartizione è sempre crescente e compresa tra 0 e 1.\newline
+Se x è continua e fissiamo $t \in \mathbb{R}$, allora $P(x=t) = 0$.\newline
+\begin{enumerate}[resume]\bfseries
+\item Cosa intendiamo per schema successo insuccesso?
+\end{enumerate}
+Uno schema successo-insuccesso è una sequenza di un numero finito di fenomeni aleatori, ognuno dei quali può dare successo o insuccesso. Si può studiare il numero di successi (variabile binomiale, ogni successo avviene con probabilità $p$ ed ogni fenomeno aleatorio è indipendente dall'altro) o il numero di insuccessi prima di ottenere un successo (variabile geometrica).\newline
+Esempio: L'estrazione di n palline colorate da un urna in cui vogliamo pescare k palline blu è uno schema successo- insuccesso. Successo: pesco una pallina blu. Insuccesso: non la pesco.
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile aleatoria geometrica? (x2)
+\end{enumerate}
+In uno schema successo-insuccesso a prove indipendenti.\newline
+X = numero di successi prima di ottenere un successo.\newline
+Si può considerare ad esempio il lancio di un dado in cui il successo è dato dal risultato 6. Allora il parametro p è $\frac{1}{6}$ e scriviamo la variabile geometrica $X \sim G(p)$.
+La densità è:
+\[pX(k)= \begin{cases} p(1 - p)^{k} & \mbox{se } k\mbox{= 0, 1, 2...} \\ 0 & \mbox{altrimenti } \end{cases} \]
+Esiste anche la variabile geometrica modificata, denotata con $X \sim \tilde{G}(p)$ la cui densità è:
+\[pX(k)= \begin{cases} p(1 - p)^{k-1} & \mbox{se } k\mbox{= 1, 2, 3...} \\ 0 & \mbox{altrimenti } \end{cases} \]
+Non è altro che una variabile geometrica standard a cui è stato effettuato uno shift di uno.\newline
+In altre parole, la variabile geometrica ci dice che dopo $k$ insuccessi avremo un successo, la geometrica modificata ci dice che il k-esimo tentativo è il successo.\newline
+Se la variabile è geometrica standard $E[X] = \frac{1-p}{p}$\newline
+Se la variabile è geometrica modificata $E[X] = \frac{1}{p}$
+\begin{enumerate}[resume]\bfseries
+	\item Qual'è il valore atteso di una variabile aleatoria di Bernoulli? (x2)
+\end{enumerate}
+$X \sim B(1,p), \quad E[X] = (1)p \cdot 0(1-p) = p$
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile aleatoria binomiale? La sua densità? Il valore atteso? (x3)
+\end{enumerate}
+In uno schema successo insuccesso a prove indipendenti, siamo interessati a studiare il numero dei successi.
+Allora X è una variabile binomiale di parametro p (probabilità del successo) e si scrive $X \sim B(n,p)$ dove n è il numero tentativi effettuati. La sua densità è:
+\[pX(k)= \begin{cases} \binom{n}{k}p^{k}(1-p)^{n-k}& \mbox{se } k\mbox{= 0, 1, 2...n} \\ 0 & \mbox{altrimenti } \end{cases} \]
+$E[X] = np$ \textit{(dimostrazione sulle note, usando la linearità del valore atteso)}
+\begin{enumerate}[resume]\bfseries
+\item  Cos'è una variabile ipergeometrica? Qual'è la sua densità? Quale il valore atteso?(x4)
+\end{enumerate}
+È uno schema successo-insuccesso senza ripetizione. Per esempio il fenomeno aleatorio consiste nell’estrazione di n palline,
+senza rimpiazzare di volta in volta la pallina estratta, da una scatola contenente $b$ bianche e $r$ rosse. Diciamo
+che la prova dà successo se viene estratta una pallina bianca e consideriamo la variabile X data
+dal numero di successi ottenuti, cioè dal numero di palline bianche estratte.
+Lo spazio $\Omega$ è dato da tutti i possibili sottoinsiemi di n palline scelte da un insieme
+di $b + r$ palline (tutte), con probabilità uniforme. \newline
+L’evento $X = k$ è dato quindi da tutti i sottoinsiemi delle $b + r$ palline costituiti da k palline bianche e n - k palline rosse. Le k bianche le posso scegliere in $\binom{b}{k}$ modi. Le n - k rosse in $\binom{r}{n-k}$ modi.\newline
+La densità è quindi:
+\[pX(k)= \begin{cases}\frac{\binom{b}{k} \binom{r}{n-k}}{\binom{b+r}{n}}
+& \mbox{se } k\mbox{= 0, 1, 2...min(n,b)} \\ 0 & \mbox{altrimenti } \end{cases} \]
+e scriviamo $X \sim H(n,b,r)$\newline
+$E[X] = \frac{nb}{b+r}$  \textit{(dimostrazione sulle note, usando la linearità del valore atteso)}.
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile di Poisson?(x2)
+\end{enumerate}
+Pensiamo a una variabile binomiale con n molto grande e p molto piccolo. Usare una variabile binomiale risulterebbe scomodo, perchè la formula della densità binomiale ha un carico computazionale altissimo per questi tipi di numeri. Introduciamo quindi $\lambda = np$, $p= \frac{\lambda}{n}$\newline
+$X \sim B(n,\frac{\lambda}{n})^n$\newline
+$P_X(k)= \binom{n}{k} (\frac{\lambda}{n})^k (1- \frac{\lambda}{n})^{n-k}$\newline
+Per $n \to \infty $, questo valore tende a $ \frac{\lambda^k}{k!} e^{-\lambda}$
+X allora è una variabile di Poisson di parametro $\lambda$ e si scrive $X \sim P(\lambda)$, la cui densità è:
+
+\[pX(k)= \begin{cases} \frac{\lambda^k}{k!} e^{-\lambda} & \mbox{se } k\mbox{= 0, 1, 2...} \\ 0 & \mbox{altrimenti } \end{cases} \]
+$E[X] = \lambda$ perchè $X \sim B(n,\frac{\lambda}{n}) \to E[X]= n \frac{\lambda}{n} = \lambda$
+\begin{enumerate}[resume]\bfseries
+	\item Cos'è una variabile aleatoria continua uniforme? La sua densità? Il valore atteso? (x3)
+\end{enumerate}
+Si tratta di una variabile aleatoria continua che attribuisce la stessa probabilità a tutti i punti appartenenti ad un dato intervallo [a,b].
+La funzione di ripartizione è:
+\[Fx(t)=   \begin{cases}{1}
+& t>b  \\ 0 & t< a \\ \frac{t-a}{b-a} & t \in [a,b]\end{cases} \]
+La densità è:
+\[fx(s)=   \begin{cases}{0}
+& s<a, s>b  \\ \frac{1}{b-a}& s \in [a,b] \end{cases} \]
+Il valore atteso é il punto medio dell'intervallo $[a,b]$ ovvero $\frac{a+b}{2}$.
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile aleatoria esponenziale? La sua densità? Il valore atteso? (x3)
+\end{enumerate}
+Una variabile aleatoria esponenziale è una variabile aleatoria continua, utile per modellare alcuni
+fenomeni naturali, per esempio il ”tempo di decadimento di una particella radioattiva“ o il tempo di eruzione di un certo vulcano.\newline
+Si denota con $X \sim Exp(a)$ in cui $a$ è il parametro, $a \in \mathbb{R}, a > 0$.\newline
+Le variabili aleatorie esponenziali godono della proprietà di mancanza di memoria, come le variabili geometriche:\newline
+$P(X \ge t+u|X \ge u)={\frac {P(X \ge t+u)}{P(X \ge u)}}=P(X \ge t)$
+La funzione di ripartizione è:
+\[Fx(t)=   \begin{cases}{1 -  e^{-at}}
+& t>0  \\ 0 & t< 0 \end{cases} \]
+La densità è:
+\[fx(s)=   \begin{cases}{ae^{-as}}
+& s>0  \\ 0 & s< 0 \end{cases} \]
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile aleatoria bidimensionale?
+\end{enumerate}
+È una variabile aleatoria multimensionale in cui $n=2$.
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una variabile aleatoria n-dimensionale? (Multidimensionali)
+\end{enumerate}
+Una variabile aleatoria di dimensione n è data da n variabili aleatorie standard che denotiamo con $x_1,..,x_n$.
+Le densità delle variabili $x_i$ si dicono marginali, mentre la densità di $(x_1,...,x_n)$ si dice congiunta.
+\begin{enumerate}[resume]\bfseries
+	\item Se abbiamo due densità marginali uguali, possiamo dedurre la congiunta? Quando non possiamo? Mi fai un esempio?(x2)
+\end{enumerate}
+Si può ricavare la densità congiunta di una variabile multidimensionale solo se tutte le variabili $(x_1,...,x_n)$ che la compongono sono indipendenti:
+\[p_{x_1,...,x_n}(k_1,...,k_n)= p_{x_1}(k_1)  \cdot ...  \cdot p_{x_n}(k_n) \]
+Per esempio, sia $Y = x_1 + x_2 + x_3$, dove le $x_i$ sono i risultati dei lanci di tre dadi. Sapendo le tre densità delle $x_i$ è possibile ricavare la congiunta, ovvero la densità di Y perchè i tre lanci sono eventi indipendenti.
+\begin{enumerate}[resume]\bfseries
+	\item Come si calcola la densità marginale?
+\end{enumerate}
+Le densità marginali di una variabile aleatoria multidimensionale non sono altro che le densità delle singole variabili $(x_1,...,x_n)$, quindi dipende dal tipo di variabili aleatorie.
+\begin{enumerate}[resume]\bfseries
+	\item Trasformazione di variabili, cos'è il massimo di due variabili aleatorie? E il minimo?
+\end{enumerate}
+Siano X e Y due variabili aleatorie discrete.\newline
+Il massimo si tratta di una variabile multidimensionale (bidimensionale nell'esempio) di tipo $Z=max(X,Y)$, ed è il numero aleatorio che indica il massimo tra i due precedenti.\newline
+In altre parole, si tratta di calcolare la probabilità che capitano sia uno che l'altro evento desiderato.\newline
+Per definizione di massimo:
+\[P(max(X,Y) \le t)=P(X\le t,Y \le t)
+\]
+Se le due variabili sono indipendenti, allora:
+\[P(X\le t,Y \le t) = P(X \le t) P(Y \le t)\]
+Quindi, la probabilità congiunta è uguale al prodotto delle probabilità marginali:
+\[F_z(t) = F_x(t) \cdot F_y(t)\]
+Lo stesso principio vale per il minimo. In questo caso vogliamo calcolare la probabilità che almeno uno dei due eventi capiti (ci fermiamo non appena uno dei due si verifica)\newline
+$W = min(X,Y)$, e siamo interessati a calcolare $1 - F_W(t) $ dove $F_W(t)$ è comunque il prodotto delle due funzioni di ripartizione.
+\[1 - F_W(t) = P(W > k) = P(min(X,Y) > t) =P(X\ge t,Y \ge t) = (1-F_X(t)) (1- F_Y(t))\]
+\textit{(Dimostrazione ed esempio nelle note...)}
+\begin{enumerate}[resume]\bfseries
+\item Come trovo la varianza di una variabile aleatoria discreta? Che informazioni ne ricavo?(x2)
+\end{enumerate}
+In statistica descrittiva, la varianza di un carattere è la media dei quadrati degli scarti rispetto alla media:
+\[ Var(x) = E[(x - E[x])^2]\]
+o equivalentemente:
+\[Var(x) = E[x^2] - E[x]^2\]
+\textit{(Dimostrazione sulle note... Comunque basta sviluppare il quadrato.)}\newline
+Come la varianza nella statistica descrittiva, un valore basso significa che i dati sono raggruppati molto vicini fra loro, mentre una varianza elevata indica dei dati più distribuiti.
+\begin{enumerate}[resume]\bfseries
+\item Come trovo, generalmente, il valore atteso di una variabile aleatoria discreta? (x5)
+\end{enumerate}
+Nel caso di variabile casuale discreta:
+\[ E[X]=\sum _{i=1}^{\infty }x_{i}\,p_{i}\]
+Il valore atteso non è altro che una media pesata in cui il peso è la probabilità.
+\begin{enumerate}[resume]\bfseries
+\item Cosa intendiamo per mancanza di memoria? Come scriviamo questa proprietà? Dimostrazione. (x4)
+\end{enumerate}
+La mancanza di memoria è una proprietà di alcune variabili aleatorie (geometriche e esponenziali):
+\[P(X \ge t+u|X \ge u)={\frac {P(X \ge t+u)}{P(X \ge u)}}=P(X \ge t)\]
+Sostanzialmente questa formula cela il fatto che se un certo evento non è ancora accaduto, sapere per quanto tempo non è accaduto non modifica la probabilità che questo accada.
+\textit{(Dimostrazione nelle note, dipende dalla variabile...)}
+\begin{enumerate}[resume]\bfseries
+\item Come trovo la varianza della somma di due variabili aleatorie discrete? Dimostrazione
+\end{enumerate}
+In generale, non vale $Var(x+y) = Var(x) + Var(y)$. Vale solo se $x$ e $y$ sono incorrelate (la loro covarianza è 0) e sono indipendenti.
+\begin{enumerate}[resume]\bfseries
+\item Come trovo la densità di una variabile continua?
+\end{enumerate}
+Osserviamo che
+$F(b) - F(a) = \int_{a}^{b} f(s) ds$
+Il teorema fondamentale del calcolo integrale ci dice che tale formula vale se F è derivabile e $F'(t) = f(t)$.
+Abbiamo quindi il seguente fatto: se una variabile continua X ha funzione di ripartizione F(t) derivabile, allora $f(t) = F'(t)$ è la densità di X.
+\begin{enumerate}[resume]\bfseries
+\item Cosa vuol dire probabilità condizionale (condizionata)? Qual'è la formula di Bayes? (x2)
+\end{enumerate}
+Siano A e B eventi. Denotiamo con $P(A|B)$ la probabilità che si verichi A, sapendo che B è verificato.\newline
+$P(A|B) = \frac{P(A \cap B)}{P(B)}$.
+Spesso questa formula viene usata anche al contrario: \newline $P(A \cap B) = P(A|B) \cdot P(B)$.
+La formula di Bayes viene utilizzata per calcolare $P(A|B)$ quando è molto facile calcolare $P(B|A)$:
+\[P(A|B)  = \frac{P(B|A) \cdot P(A) }{P(B)}\]
+\textit{(Dimostrazione per sostituzioni...)}
+\begin{enumerate}[resume]\bfseries
+\item Cos'è una funzione di ripartizione? Un esempio?
+\end{enumerate}
+La funzione di ripartizione di una variabile aleatoria $X$ a valori reali è la funzione che associa a ciascun valore $x$ la probabilità del seguente evento: "la variabile aleatoria $X$ assume valori minori o uguali ad x".\newline
+In altre parole, è la funzione $ F\colon \mathbb{R} \to [0,1] $ con dominio la retta reale e immagine nell'intervallo $[0,1] $definita da
+$F(x)=P(X\leq x)$.
+Una funzione F è una valida funzione di ripartizione se è non decrescente, continua a destra e:
+\[F(x)\geq 0,\quad \forall x\]
+\[lim _{{x\to +\infty }}F(x)=1\]
+\[lim _{{x\to -\infty }}F(x)=0\]
+Vedi una qualsiasi variabile aleatoria continua per l'esempio.
+\begin{enumerate}[resume]\bfseries
+\item Cos'è la linearità di un valore atteso? Ha altre proprietà?
+\end{enumerate}
+Un'importante caratteristica del valore atteso è la linearità: ovvero per ogni variabile casuale X e coppia di numeri reali a e b si ha:
+$E[aX+b]=aE[X]+b$
+Questa proprietà è facilmente dimostrabile: ad esempio, nel caso di una variabile casuale discreta, si ha
+\[ E[aX+b]=\sum_{i=1}^{\infty }(ax_{i}+b)P(X=x_{i})=a\sum_{i=1}^{\infty }x_{i}P(X=x_{i})+b\sum_{i=1}^{\infty }P(X=x_{i})=aE[X]+b  \]
+perché la somma delle probabilità è 1, in quanto consideriamo la somma di tutti i possibili eventi.\newline
+Questa proprietà ha la conseguenza importante che date due variabili casuali qualsiasi X e Y (non necessariamente indipendenti) si ha:
+\[E[X+Y]= E[X]+ E[Y]\]
+Questa proprietà non vale per il prodotto: in generale, $E[XY]$ è diverso da $E[X]E[Y]$. Quando queste due quantità sono uguali, si dice che X e Y sono non correlate. In particolare, due variabili aleatoria indipendenti sono non correlate.
+\begin{enumerate}[resume]\bfseries
+\item  Cos'è la distribuzione gaussiana (o normale)?(x3)
+\end{enumerate}
+La distribuzione normale dipende da due parametri, la media $\mu$ e la varianza $\sigma^2$, ed è indicata tradizionalmente con:\newline
+$N(\mu ,\sigma ^{2}).$
+Si tratta di una distribuzione di probabilità continua che è spesso usata come prima approssimazione per descrivere variabili aleatorie a valori reali che tendono a concentrarsi attorno a un singolo valor medio. Il grafico della funzione di densità di probabilità associata è simmetrico e ha una forma a campana.\newline
+Viene usata principalmente attraverso il teorema centrale del limite. \newline
+La distribuzione normale è caratterizzata dalla seguente funzione di densità di probabilità:
+\[f(x)=\frac{1}{\sigma {\sqrt  {2\pi }}}\;e^{{-\frac  {\left(x-\mu \right)^{2}}{2\sigma ^{2}}}}~{\mbox{ con }}~x\in {\mathbb  {R}}.\]
+Dove $\mu$  è il valore atteso e $\sigma^{2}$ la varianza.\newline
+\begin{enumerate}[resume]\bfseries
+	\item Cos'è il teorema centrale del limite?
+\end{enumerate}
+Siano $x_1,...,x_n$ (con n GRANDE) variabili aleatorie indipendenti aventi tutte la stessa densità (discreta o continua). Siano  $\mu =  E[X_1],  \sigma^2 = Var(x_1)$.\newline
+Allora  $x_1+...+x_n \sim N(n\mu, n\sigma^2)$
+Questo perchè piú aumenta il numero di variabili, piú ci avviciniamo a una densità normale.
+\begin{enumerate}[resume]\bfseries
+	\item Cos'è la legge dei grandi numeri? Dimostrazione.
+\end{enumerate}
+Se lanciamo una moneta n volte e otteniamo k volte testa, è difficile  ottenere $\frac{k}{n} = \frac{1}{2}$. Tuttavia, l'intuizione
+ci suggerisce che se n è molto grande, il rapporto k/n non debba discostarsi troppo da $\frac{1}{2}$. Abb
+iamo a che fare in questo caso con una sequenza di variabili $X1, X2, ...$. tutte di densità $B  \sim (1, \frac{1}{2})$.\newline
+La legge dei grandi numeri permette di dare un senso preciso a questo tipo di intuizione. Abbiamo bisogno di un concetto di convergenza per le variabili aleatorie.\newline
+La disugualianza di Chebyshev dice: \newline
+\[X \text{variabile aleatoria discreta}. \quad \epsilon > 0\]
+\[ P(\vert x- E[x] > \epsilon \vert) \le \frac{Var(x)}{\epsilon^2}\]
+\textit{Dimostrazione} \newline
+$A= \{\vert x-E[x] \vert > \epsilon \}$, prendiamo $Y= \epsilon^2  \chi_a$ e $Z= (x- E[x])^2$.
+Sappiamo che $Z \ge Y$ sempre, sia se A accade sia non accade, e quindi $E[Z] \ge E[Y]$.
+Di conseguenza:
+\[ \epsilon^2 E[\chi_A] \le E[(x-E[x]^2)]\]
+\[P(A) \le \frac{Var(x)}{\epsilon^2}  \square\]
+Sia ora $x_1,x_2,...,x_n$ una successione di variabili aleatorie discrete indipendenti, aventi tutte la stessa densità.\newline
+Allora
+\[\lim_{n\to\infty} P(\vert \frac{x_1 + ... + x_n}{n} - E[x_1] \vert >\epsilon) = 0\]
+\textit{Dimostrazione applicando Chebyshev a $\overline{x} = \frac{x_1 + ... + x_n}{n} $ }
